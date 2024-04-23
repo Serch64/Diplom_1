@@ -1,6 +1,7 @@
 package praktikum;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -29,19 +30,20 @@ public class IngredientTest {
                 {FILLING, "frog", 500.11F}
         };
     }
+    @Before
+    public void createIngredient() {
+        ingredient = new Ingredient(type, name, price);
+    }
     @Test
     public void getPriceTest() {
-        ingredient = new Ingredient(type, name, price);
         Assert.assertEquals(price, ingredient.getPrice(), 0.01);
     }
     @Test
     public void getNameTest() {
-        ingredient = new Ingredient(type, name, price);
         Assert.assertEquals(name, ingredient.getName());
     }
     @Test
     public void getTypeTest() {
-        ingredient = new Ingredient(type, name, price);
         Assert.assertEquals(type, ingredient.getType());
     }
 }
