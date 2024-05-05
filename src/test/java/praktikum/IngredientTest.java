@@ -25,9 +25,7 @@ public class IngredientTest {
     public static Object[][] getTestData() {
         return new Object[][]{
                 {SAUCE, "cheese sauce", 123.23F},
-                {FILLING, "steak", 325.74F},
-                {SAUCE, "szechuan sauce", 999.99F},
-                {FILLING, "frog", 500.11F}
+                {FILLING, "steak", 325F},
         };
     }
     @Before

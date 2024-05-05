@@ -14,7 +14,7 @@ import static praktikum.IngredientType.*;
 public class BurgerTest {
     private static final float BUN_GET_PRICE_STUB = 50.99F;
     private static final float INGREDIENT_GET_PRICE_STUB_1 = 99.02F;
-    private static final float INGREDIENT_GET_PRICE_STUB_2 = 75.50F;
+    private static final float INGREDIENT_GET_PRICE_STUB_2 = 75F;
     private static final String BUN_GET_NAME_STUB = "Stub Bun";
     private static final String INGREDIENT_GET_NAME_STUB_1 = "stub ingredient 1";
     private static final String INGREDIENT_GET_NAME_STUB_2 = "stub ingredient 2";
@@ -36,12 +36,16 @@ public class BurgerTest {
         receipt.append(String.format("= %s %s =%n", FILLING.toString().toLowerCase(), INGREDIENT_GET_NAME_STUB_2));
         receipt.append(String.format("(==== %s ====)%n", BUN_GET_NAME_STUB));
         receipt.append(String.format("%nPrice: %f%n", BURGER_GET_PRICE_STUB));
-
         return receipt.toString();
     }
     @Before
     public void createBurger() {
         burger = new Burger();
+    }
+    @Test
+    public void setBunsTest() {
+        burger.setBuns(bunMock);
+        Assert.assertEquals(burger.bun, bunMock);
     }
     @Test
     public void addIngredientTest() {
