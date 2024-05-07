@@ -19,6 +19,7 @@ public class BurgerTest {
     private static final String INGREDIENT_GET_NAME_STUB_1 = "stub ingredient 1";
     private static final String INGREDIENT_GET_NAME_STUB_2 = "stub ingredient 2";
     private static final float BURGER_GET_PRICE_STUB = 111.50F;
+    private static final float GET_EXPECTED_PRICE_DELTA = 0.01F;
     private Burger burger;
     @Mock
     private Bun bunMock;
@@ -27,10 +28,10 @@ public class BurgerTest {
     @Mock
     private Ingredient ingredientMock2;
 
-    public float getExpectedPrice() {
+    private float getExpectedPrice() {
         return BUN_GET_PRICE_STUB * 2 + INGREDIENT_GET_PRICE_STUB_1 + INGREDIENT_GET_PRICE_STUB_2;
     }
-    public String getExpectedReceipt() {
+    private String getExpectedReceipt() {
         StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", BUN_GET_NAME_STUB));
         receipt.append(String.format("= %s %s =%n", SAUCE.toString().toLowerCase(), INGREDIENT_GET_NAME_STUB_1));
         receipt.append(String.format("= %s %s =%n", FILLING.toString().toLowerCase(), INGREDIENT_GET_NAME_STUB_2));
@@ -73,7 +74,7 @@ public class BurgerTest {
         Mockito.when(bunMock.getPrice()).thenReturn(BUN_GET_PRICE_STUB);
         Mockito.when(ingredientMock1.getPrice()).thenReturn(INGREDIENT_GET_PRICE_STUB_1);
         Mockito.when(ingredientMock2.getPrice()).thenReturn(INGREDIENT_GET_PRICE_STUB_2);
-        Assert.assertEquals(getExpectedPrice(),  burger.getPrice(), 0.01F);
+        Assert.assertEquals(getExpectedPrice(),  burger.getPrice(), GET_EXPECTED_PRICE_DELTA);
     }
     @Test
     public void getReceiptTest() {

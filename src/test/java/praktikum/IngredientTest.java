@@ -10,6 +10,7 @@ import static praktikum.IngredientType.*;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
+    private static final float GET_PRICE_TEST_DELTA = 0.01F;
     private final IngredientType type;
     private final String name;
     private final float price;
@@ -25,7 +26,7 @@ public class IngredientTest {
     public static Object[][] getTestData() {
         return new Object[][]{
                 {SAUCE, "cheese sauce", 123.23F},
-                {FILLING, "steak", 325F},
+                {FILLING, "steak", 325F}
         };
     }
     @Before
@@ -34,7 +35,7 @@ public class IngredientTest {
     }
     @Test
     public void getPriceTest() {
-        Assert.assertEquals(price, ingredient.getPrice(), 0.01);
+        Assert.assertEquals(price, ingredient.getPrice(), GET_PRICE_TEST_DELTA);
     }
     @Test
     public void getNameTest() {
